@@ -12,6 +12,14 @@
         "symfony/yaml": "4.3.*"
     },
     "require-dev": {
+        "doctrine/coding-standard": "^6.0",
+        "phpstan/phpstan": "^0.11.19",
+        "phpstan/phpstan-phpunit": "^0.11.2",
+        "phpstan/phpstan-symfony": "^0.11.6",
+        "phpunit/phpunit": "^8.4",
+        "roave/security-advisories": "dev-master",
+        "symfony/debug-pack": "^1.0",
+        "symfony/test-pack": "^1.0"
     },
     "config": {
         "preferred-install": {
@@ -47,6 +55,23 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "phpcs": [
+            "./vendor/bin/phpcs"
+        ],
+        "phpcbf": [
+            "./vendor/bin/phpcbf"
+        ],
+        "phpstan": [
+            "./vendor/bin/phpstan analyze -l max bin config public src tests"
+        ],
+        "phpunit": [
+            "./vendor/bin/phpunit --fail-on-warning --log-junit ./var/log/phpunit.xml"
+        ],
+        "tests": [
+            "@phpcs",
+            "@phpstan",
+            "@phpunit"
         ]
     },
     "conflict": {

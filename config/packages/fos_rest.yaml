@@ -5,6 +5,7 @@ fos_rest:
       exception_controller: 'fos_rest.exception.controller:showAction'
       codes:
         App\Services\Spotify\Exception\CannotRetrieveSpotifyList: 400
+        App\Services\TheRake\Exception\CannotRetrieveTheRakeProductsAndPostsList : 400
     format_listener:
       rules:
         - { path: ^/, prefer_extension: false, fallback_format: json, priorities: [ json ] }

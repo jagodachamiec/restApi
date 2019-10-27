@@ -55,3 +55,7 @@ services:
         arguments:
             $hatimeriaProfileId: '%spotify.playlist_id.hatimeria%'
 
+    App\Services\Security\TokenAuthenticator:
+        arguments:
+            $token: '%env(TOKEN)%'
+

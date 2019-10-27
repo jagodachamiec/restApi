@@ -12,7 +12,7 @@ Write a php application (using any framework of your choosing, ie. symfony, larv
 ### GET /spotify
     - no input data needed
     - return value is a json with tracks from Hatimeria spotify playlist in a format (https://open.spotify.com/playlist/63ueJyeWHgUTEa57QUjmfI):
-```json
+```
 {
             tracks: int // number of tracks on the playlist,
             items: [{
@@ -44,7 +44,7 @@ Write a php application (using any framework of your choosing, ie. symfony, larv
         search: string (search term)
 
     - as a result return only search result data, without filters and pagination data in the structure (if result from API does not have required value for the field endpoint should return null for that field):
-```json
+```
     {
         products: [{
             name: string,
@@ -73,8 +73,10 @@ Also you should add variable for /spotify endpoint with client credentials: `APP
 
 ## Endpoints
 1. GET /
+    
     That endpoint returns json with version from composer.json. If that key doesn't exist, json will be empty.
 1. GET /spotify
+    
     That endpoint returns list of tracks from Hatimeria's playlist in Spotify service.
     Steps:
     - retrieving token based on client Id and client secret
@@ -83,6 +85,7 @@ Also you should add variable for /spotify endpoint with client credentials: `APP
     - transforming DTO to value objects, which will be returning in controller
     - whole process can use another profile Id
 1. GET /products
+    
     That endpoint returns products and posts from The Rake Api with method search based on search term.
     Endpoint has query parameters like:
     - search - characters which will be searching

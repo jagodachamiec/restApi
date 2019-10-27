@@ -4,6 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    spotify.playlist_id.hatimeria: '63ueJyeWHgUTEa57QUjmfI'
 
 services:
     # default configuration for services in *this* file
@@ -26,3 +27,31 @@ services:
     App\Services\ComposerJsonReader\ComposerJsonReader:
         arguments:
             $composerPath: '%kernel.project_dir%/composer.json'
+
+    Psr\Http\Client\ClientInterface:
+        alias: Http\Adapter\Guzzle6\Client
+
+    Http\Adapter\Guzzle6\Client: ~
+
+    Psr\Http\Message\RequestFactoryInterface:
+        alias: Http\Factory\Guzzle\RequestFactory
+
+    Http\Factory\Guzzle\RequestFactory: ~
+
+    Psr\Http\Message\StreamFactoryInterface:
+        alias: Http\Factory\Guzzle\StreamFactory
+
+    Http\Factory\Guzzle\StreamFactory: ~
+
+    App\Services\Serializer\Serializer:
+        alias: App\Services\Serializer\SymfonySerializer
+
+    App\Services\Spotify\SpotifyClient:
+        arguments:
+            $clientId: '%env(APP_SPOTIFY_CLIENT_ID)%'
+            $clientSecret: '%env(APP_SPOTIFY_CLIENT_SECRET)%'
+
+    App\Controller\SpotifyController:
+        arguments:
+            $hatimeriaProfileId: '%spotify.playlist_id.hatimeria%'
+

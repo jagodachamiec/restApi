@@ -29,8 +29,8 @@ final class ProductsController extends AbstractFOSRestController
      *
      * @Rest\Get(path="/products")
      * @Rest\QueryParam(name="search", requirements="[a-zA-Z]+", description="Search term", strict=true)
-     * @Rest\QueryParam(name="type", requirements="[a-zA-Z]+", default="all", description="Type of searching objects", strict=true)
-     * @Rest\QueryParam(map=true, name="includeProduct", default={"name", "thumbnail", "price", "brand", "url_key", "option_text_product_tag", "sku", "tax_class_id"}, requirements="[a-zA-Z]+", description="Include product's field", strict=true)
+     * @Rest\QueryParam(name="type", requirements="[a-zA-Z_]+", default="all", description="Type of searching objects", strict=true)
+     * @Rest\QueryParam(map=true, name="includeProduct", default={"name", "thumbnail", "price", "brand", "url_key", "option_text_product_tag", "sku", "tax_class_id"}, requirements="[a-zA-Z_]+", description="Include product's field", strict=true)
      * @Rest\QueryParam(map=true, name="includePost", default={"post_id", "post_title", "post_date", "permalink"}, requirements="[a-zA-Z]+", description="Include post's field", strict=true)
      * @Rest\QueryParam(name="size", requirements="\d+", default=0, description="Number of items per page", strict=true)
      * @Rest\QueryParam(name="productPage", requirements="\d+", default=0, description="Number of elements in result", strict=true)

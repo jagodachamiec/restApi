@@ -9,13 +9,13 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 final class Post
 {
     /**
-     * @var string
+     * @var string|null
      * @SerializedName("post_title")
      */
     private $postTitle;
 
     /**
-     * @var string
+     * @var string|null
      * @SerializedName("post_date")
      */
     private $postDate;
@@ -23,19 +23,19 @@ final class Post
     /** @var string|null */
     private $thumbnail;
 
-    public function __construct(string $postTitle, string $postDate, ?string $thumbnail = null)
+    public function __construct(?string $postTitle = null, ?string $postDate = null, ?string $thumbnail = null)
     {
         $this->postTitle = $postTitle;
         $this->postDate  = $postDate;
         $this->thumbnail = $thumbnail;
     }
 
-    public function getPostTitle() : string
+    public function getPostTitle() : ?string
     {
         return $this->postTitle;
     }
 
-    public function getPostDate() : string
+    public function getPostDate() : ?string
     {
         return $this->postDate;
     }

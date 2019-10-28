@@ -6,23 +6,23 @@ namespace App\Services\TheRake\ValueObject;
 
 final class Product
 {
-    /** @var string */
+    /** @var string|null */
     private $name;
 
     /** @var string|null */
     private $thumbnail;
 
-    /** @var float */
+    /** @var float|null */
     private $price;
 
-    public function __construct(string $name, float $price, ?string $thumbnail = null)
+    public function __construct(?string $name = null, ?float $price = null, ?string $thumbnail = null)
     {
         $this->name      = $name;
         $this->thumbnail = $thumbnail;
         $this->price     = $price;
     }
 
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -32,7 +32,7 @@ final class Product
         return $this->thumbnail;
     }
 
-    public function getPrice() : float
+    public function getPrice() : ?float
     {
         return $this->price;
     }

@@ -6,28 +6,28 @@ namespace App\Services\TheRake\DTO;
 
 final class Product
 {
-    /** @var float */
+    /** @var float|null */
     private $price;
 
-    /** @var string */
+    /** @var string|null */
     private $name;
 
     /** @var string|null */
     private $thumbnail;
 
-    public function __construct(float $price, string $name, ?string $thumbnail = null)
+    public function __construct(?float $price = null, ?string $name = null, ?string $thumbnail = null)
     {
         $this->price     = $price;
         $this->name      = $name;
         $this->thumbnail = $thumbnail;
     }
 
-    public function getPrice() : float
+    public function getPrice() : ?float
     {
         return $this->price;
     }
 
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }

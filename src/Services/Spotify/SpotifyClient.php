@@ -12,6 +12,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use function base64_encode;
+use function is_array;
 use function json_decode;
 use function sprintf;
 
@@ -101,7 +102,7 @@ class SpotifyClient
         }
         $contents = json_decode($tokenResponse->getBody()->getContents(), true);
 
-        if ($contents === false) {
+        if (! is_array($contents)) {
             throw CannotRetrieveToken::deserializationFailed();
         }
 
